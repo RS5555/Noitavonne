@@ -21,6 +21,6 @@ app.listen(5000, (req, res) => {
   console.log("server is running on port 5000");
 });
 
-mongoose.connect("mongodb://127.0.0.1:27017/noitavonne")
+mongoose.connect("mongodb+srv://rohitvsawant1:knbigokgrOvaZMFr@stripeserver.4vzvgix.mongodb.net/?retryWrites=true&w=majority&appName=StripeServer")
 .then(()=>console.log("connected"))
 .catch((err)=>console.log(err))
