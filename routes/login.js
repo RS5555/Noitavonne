@@ -16,11 +16,11 @@ router.post('/',async(req,res)=>{
         const user=await login.findOne({username});
 
         if(!user){
-            return res.status(400).json({message:"User does not exist",token,user});
+            return res.status(400).json({message:"User does not exist"});
         }
         const ispasswordvalid=await bcrypt.compare(password,user.password);
         if(!ispasswordvalid){
-            return res.status(400).json({message:"Invalid credentials",token,user});
+            return res.status(400).json({message:"Invalid credentials"});
         }
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET);
         res.status(200).json({message:"Login successful",token,user});
