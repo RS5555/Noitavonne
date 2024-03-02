@@ -17,8 +17,8 @@ const login = require("./routes/login");
 app.use("/login", login);
 
 
-app.listen(5000, (req, res) => {
-  console.log("server is running on port 5000");
+app.listen(8000, (req, res) => {
+  console.log(`server is running on port ${8000}`);
 });
 
 mongoose.connect("mongodb+srv://rohitvsawant1:knbigokgrOvaZMFr@stripeserver.4vzvgix.mongodb.net/?retryWrites=true&w=majority&appName=StripeServer")
