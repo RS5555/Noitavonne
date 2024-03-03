@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 // const dotenv=require("dotenv");
 // dotenv.config();
+
+
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("hello shubham sir");
@@ -15,6 +19,10 @@ app.use("/signUp", signUp);
 const login = require("./routes/login");
 
 app.use("/login", login);
+
+const donate=require("./routes/donate");
+
+app.use("/donate",donate);
 
 
 app.listen(8000, (req, res) => {

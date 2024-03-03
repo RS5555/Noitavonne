@@ -14,7 +14,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.post("/", async (req, res) => {
-  const { name, username, email, password,address } = req.body;
+  const { name, username, email, password, address } = req.body;
   try {
     const existingUser = await signUp.findOne({ username });
     if (existingUser) {
@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const { username, password, email, name,address } = req.body;
+  const { username, password, email, name, address } = req.body;
   const userId = req.params.id;
   try {
     const user = await signUp.findByIdAndUpdate(
