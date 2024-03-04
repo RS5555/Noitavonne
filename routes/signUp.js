@@ -47,9 +47,20 @@ router.put("/:id", async (req, res) => {
   const { username, password, name, address } = req.body;
   const userId = req.params.id;
   try {
+    // Hash the new password if it's provided
+    let hashedPassword;
+    if (password) {
+      hashedPassword = await bcrypt.hash(password, 10);
+    }
+
+    // Construct update object, omitting password if it's not provided
+    const updateObject = password
+      ? { username, password: hashedPassword, name, address }
+      : { username, name, address };
+
     const user = await signUp.findByIdAndUpdate(
       userId,
-      { username, password, name, address },
+      updateObject,
       { new: true }
     );
     if (!user) {
