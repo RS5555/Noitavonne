@@ -17,7 +17,6 @@ router.post('/', async (req, res) => {
           currency: "INR",
           payment_method_types: ["card"],
           metadata: { name,amount },
-          Name:name
         });
         const clientSecret = paymentIntent.client_secret;
         res.json({ status:'ok', message: "Payment initiated", clientSecret });
