@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const stripe = require('stripe')(process.env.SECRET_KEY);
+const stripe = require('stripe')('sk_test_51OpmpaSH4cbIkpl01LYQST4vUR3bedqDwOKQKKyeodOeAlykd0ZREBfosE3mbRjkRcegH3kaAwZpmVBcF3jilVwB00FJ60GXRX');
 const json = require("body-parser");
 const dotenv=require("dotenv");
 
