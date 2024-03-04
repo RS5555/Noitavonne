@@ -14,7 +14,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.post("/", async (req, res) => {
-  const { name, username, email, password, address } = req.body;
+  const { name, username, password, address } = req.body;
   try {
     const existingUser = await signUp.findOne({ username });
     if (existingUser) {
@@ -24,7 +24,6 @@ router.post("/", async (req, res) => {
     const user = new signUp({
       name,
       username,
-      email,
       password: hashedPassword,
       address,
     });
@@ -45,12 +44,12 @@ router.get("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const { username, password, email, name, address } = req.body;
+  const { username, password, name, address } = req.body;
   const userId = req.params.id;
   try {
     const user = await signUp.findByIdAndUpdate(
       userId,
-      { username, password, email, name, address },
+      { username, password, name, address },
       { new: true }
     );
     if (!user) {
